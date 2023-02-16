@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -24,6 +24,7 @@ body {
   position: absolute;
   bottom: 30px;
   display: flex;
+  align-self: center;
   justify-content: center;
   gap: 10px;
   background-color: none;
@@ -35,8 +36,8 @@ input {
   border-style: none;
 }
 .chatlog {
-  background-color: white;
-  border: solid 1px rgb(201, 200, 200);
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.913);
   border-radius: 3px;
   padding: 30px;
 }
