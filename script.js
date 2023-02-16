@@ -14,7 +14,7 @@ function postData(username, message) {
       "Content-type": "application/json; charset=UTF-8",
       accept: "application/json",
     },
-  }).then((response) => response.json());
+  }).then(() => getData());
   // .then((data) => console.log(data));
 }
 
@@ -22,19 +22,15 @@ function getData() {
   fetch("http://localhost:3030/")
     .then((response) => response.json())
     .then((data) => {
-      setTimeout(() => {
-        console.log(data);
-        const newItem = document.createElement("p");
-        newItem.innerText = `Name: ${data[0].userName} ${data[0].msg}`;
-        chatten.appendChild(newItem);
-      }, 3000);
+      const newItem = document.createElement("p");
+      newItem.innerHTML = `${data[0].userName}: <br> ${data[0].msg}`;
+      chatten.appendChild(newItem);
     });
 }
 
 function onSubmitClick(event) {
   event.preventDefault();
   postData(userName.value, message.value);
-  getData();
 }
 
 submit.addEventListener("click", onSubmitClick);
