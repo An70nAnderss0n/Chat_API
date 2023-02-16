@@ -1,19 +1,7 @@
-// [
-//   {
-//     msg: "string",
-//     userName: "string",
-//     pDate: "dateString",
-//   },
-// ];
-
-// {
-//     "msg": "string",
-//     "userName": "string"
-//   }
-
 const submit = document.getElementById("btn-send");
 const userName = document.getElementById("username");
 const message = document.getElementById("message");
+const chatten = document.getElementById("chatLog");
 
 function postData(username, message) {
   fetch("http://localhost:3030/", {
@@ -26,17 +14,20 @@ function postData(username, message) {
       "Content-type": "application/json; charset=UTF-8",
       accept: "application/json",
     },
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+  }).then((response) => response.json());
+  // .then((data) => console.log(data));
 }
 
 function getData() {
   fetch("http://localhost:3030/")
     .then((response) => response.json())
     .then((data) => {
-      const newListItem = document.createElement("p");
-      newListItem.innerText = "test";
+      setTimeout(() => {
+        console.log(data);
+        const newItem = document.createElement("p");
+        newItem.innerText = `Name: ${data[0].userName} ${data[0].msg}`;
+        chatten.appendChild(newItem);
+      }, 3000);
     });
 }
 
